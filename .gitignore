@@ -1,0 +1,6 @@
+*.d
+*.o
+doublepod
+tags
+Release
+Debug

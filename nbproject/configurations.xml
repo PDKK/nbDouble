@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="84">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="display" displayName="display" projectFiles="true">
+      <itemPath>display/DisplayException.h</itemPath>
+      <itemPath>display/DrawableObject.cpp</itemPath>
+      <itemPath>display/DrawableObject.h</itemPath>
+      <itemPath>display/Hexagon.cpp</itemPath>
+      <itemPath>display/Hexagon.h</itemPath>
+      <itemPath>display/MainWindow.cpp</itemPath>
+      <itemPath>display/MainWindow.h</itemPath>
+      <itemPath>display/ShaderProgram.cpp</itemPath>
+      <itemPath>display/ShaderProgram.h</itemPath>
+      <itemPath>display/SimpleShaderProgram.cpp</itemPath>
+      <itemPath>display/SimpleShaderProgram.h</itemPath>
+      <itemPath>display/support.c</itemPath>
+      <itemPath>display/support.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="kazmath" displayName="kazmath" projectFiles="true">
+      <logicalFolder name="GL" displayName="GL" projectFiles="true">
+        <itemPath>kazmath/GL/mat4stack.c</itemPath>
+        <itemPath>kazmath/GL/mat4stack.h</itemPath>
+        <itemPath>kazmath/GL/matrix.c</itemPath>
+        <itemPath>kazmath/GL/matrix.h</itemPath>
+      </logicalFolder>
+      <itemPath>kazmath/aabb.c</itemPath>
+      <itemPath>kazmath/aabb.h</itemPath>
+      <itemPath>kazmath/kazmath.h</itemPath>
+      <itemPath>kazmath/mat3.c</itemPath>
+      <itemPath>kazmath/mat3.h</itemPath>
+      <itemPath>kazmath/mat4.c</itemPath>
+      <itemPath>kazmath/mat4.h</itemPath>
+      <itemPath>kazmath/plane.c</itemPath>
+      <itemPath>kazmath/plane.h</itemPath>
+      <itemPath>kazmath/quaternion.c</itemPath>
+      <itemPath>kazmath/quaternion.h</itemPath>
+      <itemPath>kazmath/ray2.c</itemPath>
+      <itemPath>kazmath/ray2.h</itemPath>
+      <itemPath>kazmath/utility.c</itemPath>
+      <itemPath>kazmath/utility.h</itemPath>
+      <itemPath>kazmath/vec2.c</itemPath>
+      <itemPath>kazmath/vec2.h</itemPath>
+      <itemPath>kazmath/vec3.c</itemPath>
+      <itemPath>kazmath/vec3.h</itemPath>
+      <itemPath>kazmath/vec4.c</itemPath>
+      <itemPath>kazmath/vec4.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <logicalFolder name="input" displayName="input" projectFiles="true">
+        <itemPath>input/input.c</itemPath>
+        <itemPath>input/input.h</itemPath>
+        <itemPath>input/keys.h</itemPath>
+      </logicalFolder>
+      <itemPath>main.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <sourceRootList>
+    <Elem>kazmath</Elem>
+    <Elem>display</Elem>
+    <Elem>input</Elem>
+  </sourceRootList>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="1">
+      <toolsSet>
+        <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
+        <compilerSet>default</compilerSet>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <incDir>
+            <pElem>display</pElem>
+            <pElem>kazmath</pElem>
+            <pElem>input</pElem>
+          </incDir>
+          <commandLine>-std=gnu99</commandLine>
+          <preprocessorList>
+            <Elem>__FOR_XORG__</Elem>
+          </preprocessorList>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>display</pElem>
+            <pElem>kazmath</pElem>
+            <pElem>input</pElem>
+          </incDir>
+          <preprocessorList>
+            <Elem>__FOR_XORG__</Elem>
+          </preprocessorList>
+        </ccTool>
+        <linkerTool>
+          <linkerLibItems>
+            <linkerOptionItem>`pkg-config --libs egl`</linkerOptionItem>
+            <linkerOptionItem>`pkg-config --libs libpng`</linkerOptionItem>
+            <linkerOptionItem>`pkg-config --libs glesv2`</linkerOptionItem>
+            <linkerOptionItem>`pkg-config --libs x11`</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </compileType>
+    </conf>
+    <conf name="Release" type="1">
+      <toolsSet>
+        <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
+        <compilerSet>default</compilerSet>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+          <incDir>
+            <pElem>display</pElem>
+            <pElem>kazmath</pElem>
+            <pElem>input</pElem>
+          </incDir>
+          <commandLine>-std=gnu99</commandLine>
+          <preprocessorList>
+            <Elem>__FOR_XORG__</Elem>
+          </preprocessorList>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+          <incDir>
+            <pElem>display</pElem>
+            <pElem>kazmath</pElem>
+            <pElem>input</pElem>
+          </incDir>
+          <preprocessorList>
+            <Elem>__FOR_XORG__</Elem>
+          </preprocessorList>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+        <linkerTool>
+          <linkerLibItems>
+            <linkerOptionItem>`pkg-config --libs egl`</linkerOptionItem>
+            <linkerOptionItem>`pkg-config --libs libpng`</linkerOptionItem>
+            <linkerOptionItem>`pkg-config --libs glesv2`</linkerOptionItem>
+            <linkerOptionItem>`pkg-config --libs x11`</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </compileType>
+    </conf>
+  </confs>
+</configurationDescriptor>
