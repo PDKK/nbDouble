@@ -38,19 +38,7 @@ char * fragmentShader =
         "}                              \n";
 
 
-GLchar vShaderStr[] =
-        "attribute vec4 vPosition;    \n"
-        "void main()                  \n"
-        "{                            \n"
-        "   gl_Position = vPosition;  \n"
-        "}                            \n";
 
-GLchar fShaderStr[] =
-        "precision mediump float;\n"\
-      "void main()                                  \n"
-        "{                                            \n"
-        "  gl_FragColor = vec4 ( 1.0, 0.0, 0.0, 1.0 );\n"
-        "}                                            \n";
 
 SimpleShaderProgram::SimpleShaderProgram() {
     // TODO Auto-generated constructor stub
