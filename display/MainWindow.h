@@ -18,13 +18,14 @@ public:
 	void initialise();
 	void render();
 	void shutDown();
+	float lightAng, camAng;
 private:
 	kmVec3 pEye;
 	kmVec3 pCenter;
 	kmVec3 pUp, lightDir, viewDir;
 	kmMat4 model, view, projection, mvp, vp, mv;
 	int frame;
-	float lightAng, camAng;
+
 	Hexagon * oneHexagon;
 	SimpleShaderProgram * simpleShader;
 };

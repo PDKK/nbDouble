@@ -63,8 +63,8 @@ int main() {
         if (keys[KEY_ESC])
             quit = true;	// exit if escape key pressed
 
-//        if (keys[KEY_A]) camAng=camAng+1;
-//        if (keys[KEY_S]) camAng=camAng-1;
+        if (keys[KEY_A]) mw->camAng=mw->camAng+1;
+        if (keys[KEY_S]) mw->camAng=mw->camAng-1;
 //        if (keys[KEY_W]) lightAng=lightAng+1;
 //        if (keys[KEY_Q]) lightAng=lightAng-1;
 //        deltaMove = keys[KEY_LSHIFT] ? 0.01 : -0.01;
