@@ -12,14 +12,16 @@
 
 class Hexagon: public DrawableObject {
 public:
-	Hexagon();
+	Hexagon(SimpleShaderProgram *s);
 	virtual ~Hexagon();
 	kmMat4 * getModelMatrix();
 	GLfloat * getVertexData();
 	GLfloat * getColorData();
         int getNumVertices();
+        void Draw(fbCalInfo *data, kmMat4 * viewMatrix, kmMat4 * projectionMatrix);
 private:
 	kmMat4 model;
+        SimpleShaderProgram * shaderProg;
 };
 
 #endif /* HEXAGON_H_ */

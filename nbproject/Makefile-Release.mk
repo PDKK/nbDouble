@@ -43,6 +43,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/display/ShaderProgram.o \
 	${OBJECTDIR}/kazmath/vec4.o \
+	${OBJECTDIR}/kinematics/kinematics.o \
 	${OBJECTDIR}/display/SimpleShaderProgram.o \
 	${OBJECTDIR}/kazmath/vec3.o \
 	${OBJECTDIR}/display/MainWindow.o \
@@ -51,6 +52,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/kazmath/GL/mat4stack.o \
 	${OBJECTDIR}/kazmath/plane.o \
 	${OBJECTDIR}/display/DrawableObject.o \
+	${OBJECTDIR}/kinematics/main.o \
 	${OBJECTDIR}/kazmath/vec2.o \
 	${OBJECTDIR}/kazmath/ray2.o \
 	${OBJECTDIR}/display/Hexagon.o \
@@ -121,6 +123,11 @@ ${OBJECTDIR}/kazmath/vec4.o: kazmath/vec4.c
 	${RM} $@.d
 	$(COMPILE.c) -O2 -D__FOR_XORG__ -Idisplay -Ikazmath -Iinput `pkg-config --cflags egl` `pkg-config --cflags libpng` `pkg-config --cflags glesv2` `pkg-config --cflags x11`    -MMD -MP -MF $@.d -o ${OBJECTDIR}/kazmath/vec4.o kazmath/vec4.c
 
+${OBJECTDIR}/kinematics/kinematics.o: kinematics/kinematics.cpp 
+	${MKDIR} -p ${OBJECTDIR}/kinematics
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -D__FOR_XORG__ -Idisplay -Ikazmath -Iinput `pkg-config --cflags egl` `pkg-config --cflags libpng` `pkg-config --cflags glesv2` `pkg-config --cflags x11`    -MMD -MP -MF $@.d -o ${OBJECTDIR}/kinematics/kinematics.o kinematics/kinematics.cpp
+
 ${OBJECTDIR}/display/SimpleShaderProgram.o: display/SimpleShaderProgram.cpp 
 	${MKDIR} -p ${OBJECTDIR}/display
 	${RM} $@.d
@@ -160,6 +167,11 @@ ${OBJECTDIR}/display/DrawableObject.o: display/DrawableObject.cpp
 	${MKDIR} -p ${OBJECTDIR}/display
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -D__FOR_XORG__ -Idisplay -Ikazmath -Iinput `pkg-config --cflags egl` `pkg-config --cflags libpng` `pkg-config --cflags glesv2` `pkg-config --cflags x11`    -MMD -MP -MF $@.d -o ${OBJECTDIR}/display/DrawableObject.o display/DrawableObject.cpp
+
+${OBJECTDIR}/kinematics/main.o: kinematics/main.cpp 
+	${MKDIR} -p ${OBJECTDIR}/kinematics
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -D__FOR_XORG__ -Idisplay -Ikazmath -Iinput `pkg-config --cflags egl` `pkg-config --cflags libpng` `pkg-config --cflags glesv2` `pkg-config --cflags x11`    -MMD -MP -MF $@.d -o ${OBJECTDIR}/kinematics/main.o kinematics/main.cpp
 
 ${OBJECTDIR}/kazmath/vec2.o: kazmath/vec2.c 
 	${MKDIR} -p ${OBJECTDIR}/kazmath

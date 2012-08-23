@@ -14,14 +14,12 @@ public:
 	ShaderProgram();
 	virtual ~ShaderProgram();
 	void draw();
+    GLint program;
 protected:
 	GLuint createShader(const GLchar* source, GLenum type);
 	void printLog(const GLuint obj);
 
-    GLint program;
-    GLint vert_attrib;
-    GLint color_attrib;
-    GLint mvp_uniform;
+
 
 };
 

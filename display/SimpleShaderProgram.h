@@ -11,11 +11,14 @@
 #include "DrawableObject.h"
 #include "ShaderProgram.h"
 
-class SimpleShaderProgram : protected ShaderProgram{
+class SimpleShaderProgram : public ShaderProgram{
 public:
 	SimpleShaderProgram();
 	virtual ~SimpleShaderProgram();
-	void draw(DrawableObject * obj, kmMat4 * viewMatrix, kmMat4 * projectionMatrix);
+	
+    GLint vert_attrib;
+    GLint color_attrib;
+    GLint mvp_uniform;        
 };
 
 #endif /* SIMPLESHADERPROGRAM_H_ */

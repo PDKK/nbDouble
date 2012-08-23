@@ -49,6 +49,14 @@
       <itemPath>kazmath/vec4.c</itemPath>
       <itemPath>kazmath/vec4.h</itemPath>
     </logicalFolder>
+    <logicalFolder name="kinematics" displayName="kinematics" projectFiles="true">
+      <itemPath>kinematics/CalInfo.h</itemPath>
+      <itemPath>kinematics/kinematics.cpp</itemPath>
+      <itemPath>kinematics/kinematics.h</itemPath>
+      <itemPath>kinematics/main.cpp</itemPath>
+      <itemPath>kinematics/vector32.h</itemPath>
+      <itemPath>kinematics/vector64.h</itemPath>
+    </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
                    projectFiles="true">
@@ -79,6 +87,7 @@
     <Elem>kazmath</Elem>
     <Elem>display</Elem>
     <Elem>input</Elem>
+    <Elem>kinematics</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -104,6 +113,7 @@
             <pElem>display</pElem>
             <pElem>kazmath</pElem>
             <pElem>input</pElem>
+            <pElem>kinematics</pElem>
           </incDir>
           <preprocessorList>
             <Elem>__FOR_XORG__</Elem>

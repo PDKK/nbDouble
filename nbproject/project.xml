@@ -13,6 +13,7 @@
                 <sourceRootElem>kazmath</sourceRootElem>
                 <sourceRootElem>display</sourceRootElem>
                 <sourceRootElem>input</sourceRootElem>
+                <sourceRootElem>kinematics</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>

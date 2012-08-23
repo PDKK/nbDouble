@@ -43,6 +43,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/display/ShaderProgram.o \
 	${OBJECTDIR}/kazmath/vec4.o \
+	${OBJECTDIR}/kinematics/kinematics.o \
 	${OBJECTDIR}/display/SimpleShaderProgram.o \
 	${OBJECTDIR}/kazmath/vec3.o \
 	${OBJECTDIR}/display/MainWindow.o \
@@ -51,6 +52,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/kazmath/GL/mat4stack.o \
 	${OBJECTDIR}/kazmath/plane.o \
 	${OBJECTDIR}/display/DrawableObject.o \
+	${OBJECTDIR}/kinematics/main.o \
 	${OBJECTDIR}/kazmath/vec2.o \
 	${OBJECTDIR}/kazmath/ray2.o \
 	${OBJECTDIR}/display/Hexagon.o \
@@ -109,22 +111,27 @@ ${OBJECTDIR}/display/support.o: display/support.c
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -g -D__FOR_XORG__ -Idisplay -Ikazmath -Iinput `pkg-config --cflags egl` `pkg-config --cflags libpng` `pkg-config --cflags glesv2` `pkg-config --cflags x11`    -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.cpp
+	$(COMPILE.cc) -g -D__FOR_XORG__ -Idisplay -Ikazmath -Iinput -Ikinematics `pkg-config --cflags egl` `pkg-config --cflags libpng` `pkg-config --cflags glesv2` `pkg-config --cflags x11`    -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.cpp
 
 ${OBJECTDIR}/display/ShaderProgram.o: display/ShaderProgram.cpp 
 	${MKDIR} -p ${OBJECTDIR}/display
 	${RM} $@.d
-	$(COMPILE.cc) -g -D__FOR_XORG__ -Idisplay -Ikazmath -Iinput `pkg-config --cflags egl` `pkg-config --cflags libpng` `pkg-config --cflags glesv2` `pkg-config --cflags x11`    -MMD -MP -MF $@.d -o ${OBJECTDIR}/display/ShaderProgram.o display/ShaderProgram.cpp
+	$(COMPILE.cc) -g -D__FOR_XORG__ -Idisplay -Ikazmath -Iinput -Ikinematics `pkg-config --cflags egl` `pkg-config --cflags libpng` `pkg-config --cflags glesv2` `pkg-config --cflags x11`    -MMD -MP -MF $@.d -o ${OBJECTDIR}/display/ShaderProgram.o display/ShaderProgram.cpp
 
 ${OBJECTDIR}/kazmath/vec4.o: kazmath/vec4.c 
 	${MKDIR} -p ${OBJECTDIR}/kazmath
 	${RM} $@.d
 	$(COMPILE.c) -g -D__FOR_XORG__ -Idisplay -Ikazmath -Iinput `pkg-config --cflags egl` `pkg-config --cflags libpng` `pkg-config --cflags glesv2` `pkg-config --cflags x11`    -MMD -MP -MF $@.d -o ${OBJECTDIR}/kazmath/vec4.o kazmath/vec4.c
 
+${OBJECTDIR}/kinematics/kinematics.o: kinematics/kinematics.cpp 
+	${MKDIR} -p ${OBJECTDIR}/kinematics
+	${RM} $@.d
+	$(COMPILE.cc) -g -D__FOR_XORG__ -Idisplay -Ikazmath -Iinput -Ikinematics `pkg-config --cflags egl` `pkg-config --cflags libpng` `pkg-config --cflags glesv2` `pkg-config --cflags x11`    -MMD -MP -MF $@.d -o ${OBJECTDIR}/kinematics/kinematics.o kinematics/kinematics.cpp
+
 ${OBJECTDIR}/display/SimpleShaderProgram.o: display/SimpleShaderProgram.cpp 
 	${MKDIR} -p ${OBJECTDIR}/display
 	${RM} $@.d
-	$(COMPILE.cc) -g -D__FOR_XORG__ -Idisplay -Ikazmath -Iinput `pkg-config --cflags egl` `pkg-config --cflags libpng` `pkg-config --cflags glesv2` `pkg-config --cflags x11`    -MMD -MP -MF $@.d -o ${OBJECTDIR}/display/SimpleShaderProgram.o display/SimpleShaderProgram.cpp
+	$(COMPILE.cc) -g -D__FOR_XORG__ -Idisplay -Ikazmath -Iinput -Ikinematics `pkg-config --cflags egl` `pkg-config --cflags libpng` `pkg-config --cflags glesv2` `pkg-config --cflags x11`    -MMD -MP -MF $@.d -o ${OBJECTDIR}/display/SimpleShaderProgram.o display/SimpleShaderProgram.cpp
 
 ${OBJECTDIR}/kazmath/vec3.o: kazmath/vec3.c 
 	${MKDIR} -p ${OBJECTDIR}/kazmath
@@ -134,7 +141,7 @@ ${OBJECTDIR}/kazmath/vec3.o: kazmath/vec3.c
 ${OBJECTDIR}/display/MainWindow.o: display/MainWindow.cpp 
 	${MKDIR} -p ${OBJECTDIR}/display
 	${RM} $@.d
-	$(COMPILE.cc) -g -D__FOR_XORG__ -Idisplay -Ikazmath -Iinput `pkg-config --cflags egl` `pkg-config --cflags libpng` `pkg-config --cflags glesv2` `pkg-config --cflags x11`    -MMD -MP -MF $@.d -o ${OBJECTDIR}/display/MainWindow.o display/MainWindow.cpp
+	$(COMPILE.cc) -g -D__FOR_XORG__ -Idisplay -Ikazmath -Iinput -Ikinematics `pkg-config --cflags egl` `pkg-config --cflags libpng` `pkg-config --cflags glesv2` `pkg-config --cflags x11`    -MMD -MP -MF $@.d -o ${OBJECTDIR}/display/MainWindow.o display/MainWindow.cpp
 
 ${OBJECTDIR}/input/input.o: input/input.c 
 	${MKDIR} -p ${OBJECTDIR}/input
@@ -159,7 +166,12 @@ ${OBJECTDIR}/kazmath/plane.o: kazmath/plane.c
 ${OBJECTDIR}/display/DrawableObject.o: display/DrawableObject.cpp 
 	${MKDIR} -p ${OBJECTDIR}/display
 	${RM} $@.d
-	$(COMPILE.cc) -g -D__FOR_XORG__ -Idisplay -Ikazmath -Iinput `pkg-config --cflags egl` `pkg-config --cflags libpng` `pkg-config --cflags glesv2` `pkg-config --cflags x11`    -MMD -MP -MF $@.d -o ${OBJECTDIR}/display/DrawableObject.o display/DrawableObject.cpp
+	$(COMPILE.cc) -g -D__FOR_XORG__ -Idisplay -Ikazmath -Iinput -Ikinematics `pkg-config --cflags egl` `pkg-config --cflags libpng` `pkg-config --cflags glesv2` `pkg-config --cflags x11`    -MMD -MP -MF $@.d -o ${OBJECTDIR}/display/DrawableObject.o display/DrawableObject.cpp
+
+${OBJECTDIR}/kinematics/main.o: kinematics/main.cpp 
+	${MKDIR} -p ${OBJECTDIR}/kinematics
+	${RM} $@.d
+	$(COMPILE.cc) -g -D__FOR_XORG__ -Idisplay -Ikazmath -Iinput -Ikinematics `pkg-config --cflags egl` `pkg-config --cflags libpng` `pkg-config --cflags glesv2` `pkg-config --cflags x11`    -MMD -MP -MF $@.d -o ${OBJECTDIR}/kinematics/main.o kinematics/main.cpp
 
 ${OBJECTDIR}/kazmath/vec2.o: kazmath/vec2.c 
 	${MKDIR} -p ${OBJECTDIR}/kazmath
@@ -174,7 +186,7 @@ ${OBJECTDIR}/kazmath/ray2.o: kazmath/ray2.c
 ${OBJECTDIR}/display/Hexagon.o: display/Hexagon.cpp 
 	${MKDIR} -p ${OBJECTDIR}/display
 	${RM} $@.d
-	$(COMPILE.cc) -g -D__FOR_XORG__ -Idisplay -Ikazmath -Iinput `pkg-config --cflags egl` `pkg-config --cflags libpng` `pkg-config --cflags glesv2` `pkg-config --cflags x11`    -MMD -MP -MF $@.d -o ${OBJECTDIR}/display/Hexagon.o display/Hexagon.cpp
+	$(COMPILE.cc) -g -D__FOR_XORG__ -Idisplay -Ikazmath -Iinput -Ikinematics `pkg-config --cflags egl` `pkg-config --cflags libpng` `pkg-config --cflags glesv2` `pkg-config --cflags x11`    -MMD -MP -MF $@.d -o ${OBJECTDIR}/display/Hexagon.o display/Hexagon.cpp
 
 ${OBJECTDIR}/kazmath/aabb.o: kazmath/aabb.c 
 	${MKDIR} -p ${OBJECTDIR}/kazmath

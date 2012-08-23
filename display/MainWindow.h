@@ -28,6 +28,7 @@ private:
 
 	Hexagon * oneHexagon;
 	SimpleShaderProgram * simpleShader;
+        fbReverse * reverse;
 };
 
 #endif /* MAINWINDOW_H_ */

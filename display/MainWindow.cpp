@@ -11,9 +11,11 @@ extern "C" {
 #include "input.h"
 #include "keys.h"
 }
+#include "CalInfo.h"
+#include "kinematics.h"
+#include "SimpleShaderProgram.h"
 #include "DrawableObject.h"
 #include "Hexagon.h"
-#include "SimpleShaderProgram.h"
 #include "MainWindow.h"
 
 
@@ -37,8 +39,10 @@ void MainWindow::initialise() {
 		exit(-1);
 	std::cout << "Context Ok" << std::endl;
 
-	oneHexagon = new Hexagon();
 	simpleShader = new SimpleShaderProgram();
+	oneHexagon = new Hexagon(simpleShader);
+        reverse = new fbReverse();
+        
 
 	// all the shaders have at least texture unit 0 active so
 	// activate it now and leave it active
@@ -48,16 +52,16 @@ void MainWindow::initialise() {
 	// the way the model is drawn is effected
 	kmMat4Identity(&projection);
 	kmMat4PerspectiveProjection(&projection, 45,
-			(float) getDisplayWidth() / getDisplayHeight(), 0.1, 20);
+			(float) getDisplayWidth() / getDisplayHeight(), 100, 2500);
 
 	kmMat4Identity(&view);
 
-	pEye.x = 5;
-	pEye.y = -5;
-	pEye.z = 5;
+	pEye.x = 700;
+	pEye.y = -700;
+	pEye.z = 150;
 	pCenter.x = 0;
 	pCenter.y = 0;
-	pCenter.z = 0;
+	pCenter.z = -500;
 	pUp.x = 0;
 	pUp.y = 0;
 	pUp.z = 1;
@@ -108,9 +112,9 @@ void MainWindow::render() {
 	lightDir.z = sin(lightAng / 10.);
 	lightDir.y = 0;
 
-	pEye.x = cos(camAng / 10.) * 7.;
-	pEye.y = sin(camAng / 10.) * 7.;
-	pEye.z = 5;
+	pEye.x = cos(camAng / 10.) * 1400.;
+	pEye.y = sin(camAng / 10.) * 1400.;
+	pEye.z = 150;
 
 	// recalculate the view direction vector used by lighting
 	kmVec3Subtract(&viewDir, &pEye, &pCenter);
@@ -125,9 +129,9 @@ void MainWindow::render() {
 	kmMat4Multiply(&vp, &vp, &view);
 
         kmMat4Identity(oneHexagon->getModelMatrix());
-	simpleShader->draw(oneHexagon, &view, &projection);
-        kmMat4Translation(oneHexagon->getModelMatrix(), 0,0,1.9);
-	simpleShader->draw(oneHexagon, &view, &projection);
+	oneHexagon->Draw(&reverse->finalNodePosition, &view, &projection);
+        //kmMat4Translation(oneHexagon->getModelMatrix(), 0,0,1.9);
+	//oneHexagon->Draw(NULL, &view, &projection);
 	//drawDoublePod(&pod);
 
 	// see printf documentation for the formatting of variables...

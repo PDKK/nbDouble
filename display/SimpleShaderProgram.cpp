@@ -70,34 +70,7 @@ SimpleShaderProgram::SimpleShaderProgram() {
 
 }
 
-void SimpleShaderProgram::draw(DrawableObject * obj, kmMat4 * viewMatrix, kmMat4 * projectionMatrix) {
-    kmMat4 mvpMatrix;
-    
 
-    // Use the program object
-    glUseProgram(program);
-
-    // Pass in the position information
-
-    glVertexAttribPointer(vert_attrib, 3, GL_FLOAT, GL_FALSE,
-            0, obj->getVertexData());
-
-    glEnableVertexAttribArray(vert_attrib);
-
-    // Pass in the color information
-
-    glVertexAttribPointer(color_attrib, 4, GL_FLOAT, GL_FALSE,
-            0, obj->getColorData());
-
-    glEnableVertexAttribArray(color_attrib);
-
-
-    kmMat4Multiply(&mvpMatrix, projectionMatrix, viewMatrix);
-    kmMat4Multiply(&mvpMatrix, &mvpMatrix, obj->getModelMatrix());
-
-    glUniformMatrix4fv(mvp_uniform, 1, GL_FALSE, mvpMatrix.mat);
-    glDrawArrays(GL_LINE_LOOP, 0, obj->getNumVertices());
-}
 
 SimpleShaderProgram::~SimpleShaderProgram() {
     // TODO Auto-generated destructor stub
