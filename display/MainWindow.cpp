@@ -52,7 +52,7 @@ void MainWindow::initialise() {
 	// the way the model is drawn is effected
 	kmMat4Identity(&projection);
 	kmMat4PerspectiveProjection(&projection, 45,
-			(float) getDisplayWidth() / getDisplayHeight(), 100, 2500);
+			(float) getDisplayWidth() / getDisplayHeight(), 500, 3500);
 
 	kmMat4Identity(&view);
 
@@ -61,7 +61,7 @@ void MainWindow::initialise() {
 	pEye.z = 150;
 	pCenter.x = 0;
 	pCenter.y = 0;
-	pCenter.z = -500;
+	pCenter.z = -700;
 	pUp.x = 0;
 	pUp.y = 0;
 	pUp.z = 1;
@@ -112,8 +112,8 @@ void MainWindow::render() {
 	lightDir.z = sin(lightAng / 10.);
 	lightDir.y = 0;
 
-	pEye.x = cos(camAng / 10.) * 1400.;
-	pEye.y = sin(camAng / 10.) * 1400.;
+	pEye.x = cos(camAng / 10.) * 1800.;
+	pEye.y = sin(camAng / 10.) * 1800.;
 	pEye.z = 150;
 
 	// recalculate the view direction vector used by lighting
@@ -129,6 +129,7 @@ void MainWindow::render() {
 	kmMat4Multiply(&vp, &vp, &view);
 
         kmMat4Identity(oneHexagon->getModelMatrix());
+        reverse->Calculate();
 	oneHexagon->Draw(&reverse->finalNodePosition, &view, &projection);
         //kmMat4Translation(oneHexagon->getModelMatrix(), 0,0,1.9);
 	//oneHexagon->Draw(NULL, &view, &projection);

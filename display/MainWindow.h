@@ -19,6 +19,7 @@ public:
 	void render();
 	void shutDown();
 	float lightAng, camAng;
+        fbReverse * reverse;
 private:
 	kmVec3 pEye;
 	kmVec3 pCenter;
@@ -28,7 +29,6 @@ private:
 
 	Hexagon * oneHexagon;
 	SimpleShaderProgram * simpleShader;
-        fbReverse * reverse;
 };
 
 #endif /* MAINWINDOW_H_ */

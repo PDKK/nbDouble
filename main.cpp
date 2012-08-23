@@ -67,12 +67,16 @@ int main() {
 
         if (keys[KEY_A]) mw->camAng=mw->camAng+1;
         if (keys[KEY_S]) mw->camAng=mw->camAng-1;
-//        if (keys[KEY_W]) lightAng=lightAng+1;
-//        if (keys[KEY_Q]) lightAng=lightAng-1;
-//        deltaMove = keys[KEY_LSHIFT] ? 0.01 : -0.01;
-//        if (keys[KEY_X]) pod.topLocation.position.x += deltaMove;
-//        if (keys[KEY_Y]) pod.topLocation.position.y += deltaMove;
-//        if (keys[KEY_Z]) pod.topLocation.position.z += deltaMove;
+        if (keys[KEY_W]) mw->lightAng=mw->lightAng+1;
+        if (keys[KEY_Q]) mw->lightAng=mw->lightAng-1;
+        float deltaMove = keys[KEY_LSHIFT] ? -1.0 : 1.0;
+        if (keys[KEY_X]) mw->reverse->X += deltaMove;
+        if (keys[KEY_Y]) mw->reverse->Y += deltaMove;
+        if (keys[KEY_Z]) mw->reverse->Z += deltaMove;
+        deltaMove = keys[KEY_LSHIFT] ? -0.1 : 0.1;
+        if (keys[KEY_U]) mw->reverse->Pitch += deltaMove;
+        if (keys[KEY_V]) mw->reverse->Roll += deltaMove;
+        if (keys[KEY_W]) mw->reverse->Yaw += deltaMove;
 //        placePlatform(&pod, &pod.topLocation.position, &pod.topLocation.position);
         mw->render();	// the render loop
 
